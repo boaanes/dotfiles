@@ -1,0 +1,9 @@
+#!/bin/python3
+
+import os
+xinput = os.popen('xinput list').read()
+
+if "DeathAdder" in xinput:
+    os.popen('xinput --set-prop "Razer Razer DeathAdder" 282 0')
+    os.popen('xinput --set-prop "Razer Razer DeathAdder" 149 0.1 0 0 0 0.1 0 0 0 1.0')
+    os.popen('xinput --set-prop "Razer Razer DeathAdder" 291 0.5')

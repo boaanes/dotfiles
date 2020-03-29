@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# This script does the following:
+#	Run by itself, set the wallpaper (at X start).
+#	If given a file, set that as the new wallpaper.
+#	If given a directory, choose random file in it.
+#	If wal is installed, also generate a colorscheme.
+
+# Location of link to wallpaper link.
+bgloc="${XDG_CACHE_HOME:-$HOME/.cache/}/bg"
+
+[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..."
+
+[ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen."
+
+# If pywal is installed, use it.
+wal -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+
+# setting dunst colors
+. "${HOME}/.cache/wal/colors.sh"
+ reload_dunst() {
+    pkill dunst
+    dunst \
+	-frame_width 0 \
+        -lb "${color0}" \
+        -nb "${color0}" \
+        -cb "${color0}" \
+        -lf "${color7}" \
+        -bf "${color7}" \
+        -cf "${color7}" \
+        -nf "${color7}" &
+}
+
+reload_dunst
+
+xwallpaper --zoom "$bgloc"
