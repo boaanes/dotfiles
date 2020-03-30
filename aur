@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Please provide a AUR package name"
+    exit
+fi
+
+if [ -d "${HOME}/aur/$1" ]; then
+    while true; do
+        read -p "Directory exists - re-clone? [y/N]: " yn
+        case $yn in
+            [Yy]* ) cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$1" && git clone "https://aur.archlinux.org/$1.git" && cd "$1" && makepkg -si; break;;
+            [Nn]* ) exit;;
+            * ) exit;;
+        esac
+    done
+else
+    cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$1.git" && cd "$1" && makepkg -si
+fi
