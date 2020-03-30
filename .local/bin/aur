@@ -1,0 +1,50 @@
+#!/bin/bash
+
+COMMAND="$1"
+PACKAGE="$2"
+
+[ -z "$COMMAND" ] && echo "Please specify command" && exit
+[ -z "$PACKAGE" ] && [ "$COMMAND" != "u" ] && [ "$COMMAND" != "U" ] && echo "Please specify package name" && exit
+
+installpkg() {
+    if [ -d "${HOME}/aur/$PACKAGE" ]; then
+        while true; do
+            read -p "Directory exists - re-clone? [y/N]: " yn
+            case $yn in
+                [Yy]* ) echo "Installing: $'{PACKAGE}'..." && cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$PACKAGE" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -si; break;;
+                * ) exit;;
+            esac
+        done
+    else
+        cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -si
+    fi
+}
+
+remove() {
+    echo "Removing: '${PACKAGE}'..."
+    if [ -d "${HOME}/aur/$PACKAGE" ]; then
+        rm -rf "${HOME}/aur/$PACKAGE" && sudo pacman -Rs "$PACKAGE"
+    else
+        echo "Package is not present in aur dir"
+        echo "Trying pacman..."
+        sudo pacman -Rs "$PACKAGE"
+    fi
+}
+
+update() {
+    echo "Updating packages..."
+    cd "$HOME/aur/"
+    for d in */ ; do
+        echo ""
+        echo "Updating: ${d::-1}..."
+        cd "$HOME/aur/$d"
+        git pull
+    done
+}
+
+case $COMMAND in
+    [Ii]* ) installpkg;;
+    [Rr]* ) remove;;
+    [Uu]* ) update;;
+    * ) echo "Unkown command: '$COMMAND'" && exit;;
+esac
