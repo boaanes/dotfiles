@@ -5,6 +5,7 @@ PACKAGE="$2"
 
 [ -z "$COMMAND" ] && echo "Please specify command" && exit
 [ -z "$PACKAGE" ] && [ "$COMMAND" != "u" ] && [ "$COMMAND" != "U" ] && echo "Please specify package name" && exit
+[ ! -d "${HOME}/aur/" ] && mkdir "${HOME}/aur/"
 
 installpkg() {
     if [ -d "${HOME}/aur/$PACKAGE" ]; then
