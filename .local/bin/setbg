@@ -32,5 +32,5 @@ wal -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/po
 }
 
 reload_dunst
-
+viscolorchanger
 xwallpaper --zoom "$bgloc"
