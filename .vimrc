@@ -9,16 +9,16 @@ call plug#begin()
     Plug 'tpope/vim-surround'
 "    Plug 'w0rp/ale'
     Plug 'airblade/vim-gitgutter'
-    Plug 'tc50cal/vim-terminal'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'yuezk/vim-js'
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'ying17zi/vim-live-latex-preview'
+"    Plug 'arcticicestudio/nord-vim'
+"    Plug 'ying17zi/vim-live-latex-preview'
     Plug 'alvan/vim-closetag'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+"    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+    Plug 'ap/vim-css-color'
 
 call plug#end()
 

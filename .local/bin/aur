@@ -14,12 +14,12 @@ installpkg() {
         while true; do
             read -p "Directory exists - re-clone? [y/N]: " yn
             case $yn in
-                [Yy]* ) echo "Installing: $'{PACKAGE}'..." && cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$PACKAGE" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -si; break;;
+                [Yy]* ) echo "Installing: $'{PACKAGE}'..." && cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$PACKAGE" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci; break;;
                 * ) exit;;
             esac
         done
     else
-        cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -si
+        cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci
     fi
 }
 
