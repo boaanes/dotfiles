@@ -41,7 +41,24 @@ update() {
         echo ""
         echo "Updating: ${d::-1}..."
         cd "$HOME/aur/$d"
-        git pull
+        git remote update
+        UPSTREAM=${1:-'@{U}'}
+        LOCAL=$(git rev-parse @)
+        REMOTE=$(git rev-parse "$UPSTREAM")
+        BASE=$(git merge-base @ "$UPSTREAM")
+        
+        if [ $LOCAL = $REMOTE ]; then
+            echo "Up to date"
+        elif [ $LOCAL = $BASE ]; then
+            git pull
+            makepkg -sci
+        elif [ $REMOTE = $BASE ]; then
+            echo "Up to date"
+            git checkout .
+        else
+            echo "Diverged"
+            git pull
+        fi
     done
 }
 
