@@ -25,7 +25,7 @@ primary = ${xrdb:color1:#222}
 secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
-[bar/example]
+[bar/bar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
@@ -43,7 +43,7 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 0
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 1
@@ -54,9 +54,8 @@ font-2 = Font Awesome 5 Free:pixelsize=10;3
 font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
 font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
-modules-left = bspwm i3
-modules-center = mpd
-modules-right = xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-left = i3
+modules-right = pulseaudio filesystem memory cpu wlan battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -99,12 +98,14 @@ label-indicator-underline = ${colors.secondary}
 [module/filesystem]
 type = internal/fs
 interval = 25
+format-mounted-underline = ${colors.primary}
+format-unmounted-underline = ${colors.primary}
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted =  %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground-alt}l
 
 [module/bspwm]
 type = internal/bspwm
@@ -252,8 +253,10 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
+format-muted-underline = ${colors.primary}
 label-volume =  %percentage%%
 label-volume-foreground = ${colors.foreground-alt}
+label-volume-underline = ${colors.primary}
 
 label-muted = 
 label-muted-foreground = #fc0303
@@ -348,9 +351,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${colors.underline}
+format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.alert}
 
 label = %temperature-c%
 label-warn = %temperature-c%
