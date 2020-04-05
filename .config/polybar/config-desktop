@@ -56,7 +56,7 @@ font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = pulseaudio filesystem memory cpu eth vpn-openvpn-status temperature date 
+modules-right = pulseaudio filesystem memory cpu temperature eth vpn-openvpn-status date 
 
 tray-position = right
 tray-padding = 2
@@ -363,10 +363,8 @@ label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
