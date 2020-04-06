@@ -55,7 +55,7 @@ font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
 font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = i3
-modules-right = pulseaudio filesystem memory cpu wlan battery temperature date
+modules-right = pulseaudio filesystem memory cpu temperature wlan battery date
 
 tray-position = right
 tray-padding = 2
@@ -253,10 +253,10 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
+format-volume-underline = ${colors.primary}
 format-muted-underline = ${colors.primary}
 label-volume =  %percentage%%
 label-volume-foreground = ${colors.foreground-alt}
-label-volume-underline = ${colors.primary}
 
 label-muted = 
 label-muted-foreground = #fc0303
@@ -350,6 +350,8 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
+
 format = <ramp> <label>
 format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
@@ -360,10 +362,8 @@ label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
