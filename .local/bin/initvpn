@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo openvpn --daemon --config ~/vpn/nl-120
