@@ -56,7 +56,7 @@ font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = pulseaudio filesystem memory cpu temperature eth vpn-openvpn-status date 
+modules-right = pulseaudio filesystem memory cpu temp eth vpn-openvpn-status date 
 
 tray-position = right
 tray-padding = 2
@@ -351,8 +351,6 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
-
 format = <ramp> <label>
 format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
@@ -366,6 +364,12 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/temp]
+type = custom/script
+exec = ~/.config/polybar/scripts/temp.sh
+interval = 5
+format-underline = ${colors.primary}
 
 [module/powermenu]
 type = custom/menu
