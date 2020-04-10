@@ -15,9 +15,9 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 "    Plug 'arcticicestudio/nord-vim'
-"    Plug 'ying17zi/vim-live-latex-preview'
+    Plug 'ying17zi/vim-live-latex-preview', { 'for': 'tex' }
     Plug 'alvan/vim-closetag'
-"    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     Plug 'ap/vim-css-color'
 
 call plug#end()
@@ -80,6 +80,7 @@ call plug#end()
     set autoindent
     set nowrap
     set scrolloff=10
+    set clipboard=unnamedplus
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType jsx set omnifunc=htmlcomplete#CompleteTags
@@ -91,5 +92,7 @@ call plug#end()
 
     let g:vim_jsx_pretty_highlight_close_tag = 1
     let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
+
+    let g:livepreview_previewer = 'mupdf'
 
     colorscheme wal
