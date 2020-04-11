@@ -7,15 +7,13 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-surround'
-"    Plug 'w0rp/ale'
     Plug 'airblade/vim-gitgutter'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'yuezk/vim-js'
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-"    Plug 'arcticicestudio/nord-vim'
-    Plug 'ying17zi/vim-live-latex-preview', { 'for': 'tex' }
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'alvan/vim-closetag'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     Plug 'ap/vim-css-color'
@@ -93,6 +91,6 @@ call plug#end()
     let g:vim_jsx_pretty_highlight_close_tag = 1
     let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
 
-    let g:livepreview_previewer = 'mupdf'
+    let g:livepreview_previewer = 'zathura'
 
     colorscheme wal
