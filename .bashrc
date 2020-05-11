@@ -13,14 +13,14 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 alias pacman="sudo pacman"
-alias g="cd ~/Documents/skole/inf112/G-Unit"
 alias todo="cd ~/projects/todo"
-alias dot="cd ~/Documents/dotfiles"
+alias dot="cd ~/docs/dotfiles"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 #export PATH=$PATH':/home/bo/.gem/ruby/2.6.0/bin'
 export PATH="${PATH}:${HOME}/.local/bin/"
+export PATH="${PATH}:${HOME}/.cabal/bin/"
 
 # pywal
 (cat ~/.cache/wal/sequences &)
