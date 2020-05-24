@@ -14,7 +14,7 @@ bgloc="${XDG_CACHE_HOME:-$HOME/.cache/}/bg"
 [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen."
 
 # If pywal is installed, use it.
-wal -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+wal --backend colorz -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
 # setting dunst colors
 . "${HOME}/.cache/wal/colors.sh"
@@ -32,5 +32,5 @@ wal -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/po
 }
 
 reload_dunst
-viscolorchanger
+
 xwallpaper --zoom "$bgloc"
