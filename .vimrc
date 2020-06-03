@@ -15,7 +15,7 @@ call plug#begin()
     Plug 'vim-airline/vim-airline-themes'
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'alvan/vim-closetag'
-"    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     Plug 'ap/vim-css-color'
 
 call plug#end()
