@@ -27,11 +27,15 @@ _comp_options+=(globdots)
 export TERMINAL=/usr/bin/termite
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+export LIBVA_DRIVER_NAME=nouveau
 
 # Aliases
 alias pacman="sudo pacman"
 alias todo="cd ~/projects/todo"
 alias dot="cd ~/docs/dotfiles"
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 alias ls='ls --color=auto'
 alias vi='vim'
@@ -53,9 +57,9 @@ export PATH=$PATH:"/home/bo/.local/bin"
 export LESSHISTFILE=/dev/null
 
 # For antibody plugin manager (zsh)
-# source ~/.config/zsh/plugins.sh
+source ~/.config/zsh/plugins.sh
 
 # For zsh syntax highlighting
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
