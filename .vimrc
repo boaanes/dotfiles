@@ -17,6 +17,7 @@ call plug#begin()
     Plug 'alvan/vim-closetag'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     Plug 'ap/vim-css-color'
+    Plug 'elmcast/elm-vim'
 
 call plug#end()
 
