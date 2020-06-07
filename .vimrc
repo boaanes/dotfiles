@@ -36,7 +36,7 @@ call plug#end()
     noremap <leader>n :new<CR>:tab split<CR>:tabp<CR>:q<CR>:tabn<CR>
     
 " AUTOCLOSE BRACKETS
-    inoremap {<CR> {<CR><CR>}<up><Tab>
+"    inoremap {<CR> {<CR><CR>}<up><Tab>
 
 " SHORTCUTS
     autocmd FileType java inoremap sout System.out.println();<left><left>
