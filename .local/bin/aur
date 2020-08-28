@@ -5,8 +5,8 @@ PACKAGE="$2"
 
 # preconditions
 [[ -z "$COMMAND" ]] && echo "Please specify command" && exit
-[[ ! "$COMMAND" =~ ^[IiRrUu]$ ]] && echo "Unkown command: '$COMMAND'" && exit
-[[ -z "$PACKAGE" ]] && [ "$COMMAND" != "u" ] && [ "$COMMAND" != "U" ] && echo "Please specify package name" && exit
+[[ ! "$COMMAND" =~ ^[IiRrUuLl]$ ]] && echo "Unkown command: '$COMMAND'" && exit
+[[ -z "$PACKAGE" ]] && [ "$COMMAND" != "l" ] && [ "$COMMAND" != "L" ] && [ "$COMMAND" != "u" ] && [ "$COMMAND" != "U" ] && echo "Please specify package name" && exit
 [[ ! -d "${HOME}/aur/" ]] && mkdir "${HOME}/aur/"
 
 installpkg() {
@@ -62,9 +62,17 @@ update() {
     done
 }
 
+list() {
+    cd "$HOME/aur/"
+    for d in */ ; do
+        echo "${d::-1}"
+    done
+}
+
 case $COMMAND in
     [Ii]* ) installpkg;;
     [Rr]* ) remove;;
     [Uu]* ) update;;
+    [Ll]* ) list;;
     * ) echo "Unkown command: '$COMMAND'" && exit;;
 esac
