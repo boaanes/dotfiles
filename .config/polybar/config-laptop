@@ -46,7 +46,7 @@ font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
 font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = i3
-modules-right = pulseaudio filesystem memory cpu temp wlan system-bluetooth-bluetoothctl battery date
+modules-right = pulseaudio filesystem memory cpu temp wlan wlp system-bluetooth-bluetoothctl battery date
 
 tray-position = right
 tray-padding = 2
@@ -123,6 +123,21 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.primary}
 label = %percentage_used%%
+
+[module/wlp]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected =  <label-connected>
+format-connected-underline = ${colors.primary}
+label-connected = %essid%
+
+format-disconnected = 
+;format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.primary}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/wlan]
 type = internal/network
