@@ -62,6 +62,7 @@ call plug#end()
     autocmd FileType haskell noremap <leader>+  :!clear && ghci %<CR>
     autocmd FileType java noremap <leader>+ :!clear && javac % && java %:r && rm *.class<CR>
     autocmd FileType python noremap <leader>+ :!clear && python %<CR>
+    autocmd FileType c noremap <leader>+ :!clear && gcc -o %:r % && ./%:r<CR>
 
 " SETTINGS
     syntax on
