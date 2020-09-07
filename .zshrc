@@ -52,8 +52,6 @@ bindkey "^[[F" end-of-line
 # Pywal
 (cat ~/.cache/wal/sequences &)
 
-. "${HOME}/.cache/wal/colors.sh"
-
 # For custom scripts
 export PATH=$PATH:"/home/bo/.local/bin"
 
