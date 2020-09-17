@@ -36,6 +36,7 @@ alias pacman="sudo pacman"
 alias todo="cd ~/projects/todo"
 alias dot="cd ~/docs/dotfiles"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 
 alias ls='ls --color=auto'
 alias vi='vim'
@@ -54,6 +55,7 @@ bindkey "^[[F" end-of-line
 
 # For custom scripts
 export PATH=$PATH:"/home/bo/.local/bin"
+export PATH=$PATH:"/home/bo/.node/bin"
 
 # Fuck less history
 export LESSHISTFILE=/dev/null
