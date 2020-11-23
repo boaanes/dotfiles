@@ -35,6 +35,7 @@ export LIBVA_DRIVER_NAME=nouveau
 alias pacman="sudo pacman"
 alias todo="cd ~/projects/todo"
 alias dot="cd ~/docs/dotfiles"
+alias web="cd ~/projects/echo.uib.no"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 
@@ -67,3 +68,5 @@ source ~/.config/zsh/plugins.sh
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
