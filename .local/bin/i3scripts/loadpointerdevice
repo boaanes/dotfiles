@@ -1,8 +1,8 @@
 #!/bin/bash
 
-NAME="Razer Razer DeathAdder"
+NAME="Razer Razer DeathAdder V2"
 
 [[ $(xinput list) == *"$NAME"* ]] &&
-    xinput --set-prop "$NAME" "libinput Natural Scrolling Enabled" 0 &&
-    xinput --set-prop "$NAME" "Coordinate Transformation Matrix" 0.125 0 0 0 0.125 0 0 0 1.0 &&
-    xinput --set-prop "$NAME" "libinput Accel Speed" 0.5
+    xinput --set-prop "pointer:$NAME" "libinput Natural Scrolling Enabled" 0 &&
+    xinput --set-prop "pointer:$NAME" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1.0 &&
+    xinput --set-prop "pointer:$NAME" "libinput Accel Speed" 0.5

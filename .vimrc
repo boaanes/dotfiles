@@ -18,7 +18,7 @@ call plug#begin()
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     Plug 'ap/vim-css-color'
     Plug 'elmcast/elm-vim'
-
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " BINDINGS
