@@ -38,6 +38,7 @@ alias dot="cd ~/docs/dotfiles"
 alias web="cd ~/projects/echo.uib.no"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
+alias x="startx"
 
 alias ls='ls --color=auto'
 alias vi='vim'
