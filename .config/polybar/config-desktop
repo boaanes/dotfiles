@@ -203,7 +203,7 @@ type = custom/script
 exec = ~/.config/polybar/polystock/polystock.py --customticker GME
 ;For continuous updates
 tail = true
-format-prefix = " "
+format-prefix = ""
 format-underline = ${colors.primary}
 label = %output%
 
