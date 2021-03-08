@@ -46,7 +46,7 @@ font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
 font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 modules-left = i3
-modules-right = pulseaudio filesystem memory cpu temp eth vpn-openvpn-status date 
+modules-right = pulseaudio filesystem memory cpu temp eth vpn-openvpn-status polystock date 
 
 tray-position = right
 tray-padding = 2
@@ -191,6 +191,21 @@ exec = ~/.config/polybar/scripts/vpn-openvpn-status.sh
 interval = 5
 format-prefix = " "
 format-underline = ${colors.primary}
+
+[module/polystock]
+type = custom/script
+;Arguments for output:
+;   --biggestloser: Prints the stock with the biggest drop in a given day.
+;   --biggestgainer: Prints the stock with the biggest gain in a given day.
+;   --mostactive: Prints the most active stock in a given day.
+;   --topcrypto: Prints the top cryptocurrency by market cap in a given day.
+;   --customticker: Takes a stock ticker (ex. AAPL, GOOGL, VZ) and outputs the live price of that stock.
+exec = ~/.config/polybar/polystock/polystock.py --customticker GME
+;For continuous updates
+tail = true
+format-prefix = " "
+format-underline = ${colors.primary}
+label = %output%
 
 [settings]
 screenchange-reload = true
