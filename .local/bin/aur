@@ -14,12 +14,12 @@ installpkg() {
         while true; do
             read -p "Directory exists - re-clone? [y/N]: " yn
             case $yn in
-                [Yy]* ) echo "Installing: $'{PACKAGE}'..." && cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$PACKAGE" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci; break;;
+                [Yy]* ) echo "Installing: $'{PACKAGE}'..." && cd "${HOME}/aur/" && rm -rf "${HOME}/aur/$PACKAGE" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci && git clean -x -f; break;;
                 * ) exit;;
             esac
         done
     else
-        cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci
+        cd "${HOME}/aur/" && git clone "https://aur.archlinux.org/$PACKAGE.git" && cd "$PACKAGE" && makepkg -sci && git clean -x -f
     fi
 }
 
@@ -49,12 +49,14 @@ update() {
         
         if [ $LOCAL = $REMOTE ]; then
             echo "Up to date"
+            git clean -x -f
         elif [ $LOCAL = $BASE ]; then
             git pull
             makepkg -sci
+            git clean -x -f
         elif [ $REMOTE = $BASE ]; then
             echo "Up to date"
-            git checkout .
+            git clean -x -f
         else
             echo "Diverged"
             git pull
