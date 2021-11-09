@@ -22,7 +22,7 @@ window {
     width: 675;
     y-offset: -150px;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 mainbox {

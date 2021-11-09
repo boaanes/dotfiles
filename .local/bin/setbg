@@ -16,21 +16,4 @@ bgloc="${XDG_CACHE_HOME:-$HOME/.cache}/bg"
 # If pywal is installed, use it.
 wal --backend colorz -s -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
-# setting dunst colors
-. "${HOME}/.cache/wal/colors.sh"
- reload_dunst() {
-    pkill dunst
-    dunst \
-	-frame_width 0 \
-        -lb "${color0}" \
-        -nb "${color0}" \
-        -cb "${color0}" \
-        -lf "${color7}" \
-        -bf "${color7}" \
-        -cf "${color7}" \
-        -nf "${color7}" &
-}
-
-reload_dunst
-
 feh --bg-scale "$bgloc"
