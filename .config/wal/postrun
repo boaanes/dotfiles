@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dunstcolorscript &&
+pkill dunst;
+dunst -conf "${XDG_CONFIG_HOME:-$HOME/.config}/dunst/dunstrc_xr_colors" &
