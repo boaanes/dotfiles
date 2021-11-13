@@ -39,7 +39,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = SourceCodeProMedium:pixelsize=10;1
+font-0 = LigaSFMonoNerdFont:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = Font Awesome 5 Free:pixelsize=10;3
 font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
