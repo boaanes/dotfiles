@@ -12,7 +12,7 @@
     blackselect:       #2E3440;
     darkgray:          #2E3440;
     scrollbarcolor:    #2E3440;
-    font: "Source Code Pro Medium 11.5";
+    font: "Liga SFMono Nerd Font Medium 11.5";
     background-color: @blackdarkest;
 }
 */

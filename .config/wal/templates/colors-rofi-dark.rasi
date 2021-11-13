@@ -25,7 +25,7 @@
     foreground: {foreground};
     border-color: @background;
     spacing: 2;
-    font: "Source Code Pro Medium 11.5";
+    font: "Liga SFMono Nerd Font Medium 11.5";
 }}
 
 #window {{
