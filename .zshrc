@@ -64,6 +64,7 @@ export LESSHISTFILE=/dev/null
 
 # For antibody plugin manager (zsh)
 source ~/.config/zsh/plugins.sh
+eval $(thefuck --alias)
 
 # For zsh syntax highlighting
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
