@@ -19,7 +19,7 @@ exec_always --no-startup-id loadkeymap
 set $mod Mod4
 
 # polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id /home/bo/.config/polybar/launch.sh
 
 # wallpaper
 # exec_always --no-startup-id xwallpaper --center $HOME/Pictures/nordic_dark_wallpaper.png
@@ -44,7 +44,7 @@ font pango:Source Code Pro Medium 11.5
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -53,7 +53,7 @@ font pango:Source Code Pro Medium 11.5
 exec unclutter
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+# set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -77,7 +77,7 @@ bindsym XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -102,7 +102,7 @@ bindsym $mod+Right focus right
 #bindsym $mod+i focus up
 #bindsym $mod+l focus right
 
-bindsym $mod+l exec --no-startup-id betterlockscreen --lock
+bindsym $mod+l exec --no-startup-id betterlockscreen --lock blur
 
 focus_follows_mouse no
 
@@ -258,5 +258,5 @@ set $indicator-colour       #71F79F
 exec_always --no-startup-id dunst -conf $HOME/.config/dunst/dunstrc
 
 # external display and mouse settings
-exec_always --no-startup-id "$HOME/.local/bin/i3scripts/loadpointerdevice"
+# exec_always --no-startup-id "$HOME/.local/bin/i3scripts/loadpointerdevice"
 # exec_always --no-startup-id xrandr --output DP-1 --same-as eDP-1 --auto --mode 1920x1080
