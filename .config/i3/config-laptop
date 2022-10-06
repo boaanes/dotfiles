@@ -85,11 +85,11 @@ bindsym $mod+q kill
 # APP BINDINGS!!!
     # start rofi
     bindsym $mod+space exec --no-startup-id rofi -show run 
-    
+
     #screenshot
     bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
     bindsym Shift+Print exec --no-startup-id maim -s ~/pics/$(date +%s).png
-    
+
 # change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
