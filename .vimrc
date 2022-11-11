@@ -77,6 +77,21 @@ call plug#end()
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
 
+    "function! ShowDocIfNoDiagnostic(timer_id)
+    "  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    "    silent call CocActionAsync('doHover')
+    "  endif
+    "endfunction
+
+    "function! s:show_hover_doc()
+    "  call timer_start(500, 'ShowDocIfNoDiagnostic')
+    "endfunction
+
+    "autocmd CursorHoldI * :call <SID>show_hover_doc()
+    "autocmd CursorHold * :call <SID>show_hover_doc()
+    
+    noremap <leader>i :call CocActionAsync('doHover')<CR> 
+
 " FORMATTING
     autocmd BufWrite *.hs :Autoformat
     autocmd FileType haskell let b:autoformat_autoindent=0
