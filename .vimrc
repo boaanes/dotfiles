@@ -21,6 +21,7 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+    Plug 'vim-autoformat/vim-autoformat'
 
     " syntax highlighting
     Plug 'yuezk/vim-js'
@@ -75,6 +76,10 @@ call plug#end()
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
+
+" FORMATTING
+    autocmd BufWrite *.hs :Autoformat
+    autocmd FileType haskell let b:autoformat_autoindent=0
 
 " EXECUTION 
     autocmd FileType haskell noremap <leader>+  :!clear && ghci %<CR>
