@@ -24,14 +24,15 @@ compinit
 _comp_options+=(globdots)
 
 # exports
-export TERMINAL=/usr/bin/termite
-export VISUAL=vim
+export TERMINAL=/usr/bin/alacritty
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 export LIBVA_DRIVER_NAME=nouveau
 
 # Aliases
+alias vim="nvim"
 alias pacman="sudo pacman"
 alias todo="cd ~/projects/todo"
 alias dot="cd ~/docs/dotfiles"
