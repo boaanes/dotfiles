@@ -96,12 +96,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# for small keyboard
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+i focus up
-#bindsym $mod+l focus right
-
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id betterlockscreen --lock blur
 
 focus_follows_mouse no
