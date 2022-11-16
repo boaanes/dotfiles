@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
     use 'sainnhe/sonokai'
     use 'feline-nvim/feline.nvim'
     use 'nvim-tree/nvim-web-devicons'
+    use 'neovim/nvim-lspconfig'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
