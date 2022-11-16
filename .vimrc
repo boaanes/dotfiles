@@ -35,7 +35,6 @@ call plug#begin()
 call plug#end()
 
 " BINDINGS
-    noremap q <Nop>
     noremap <S-q> <Nop>
     noremap <leader>t :NERDTreeToggle<CR>
     noremap <leader>w :w<CR>
@@ -46,6 +45,11 @@ call plug#end()
     noremap <S-Tab> :bp<CR> 
     noremap <leader>d :bd<CR>
     noremap <leader>n :ene<CR>
+    noremap <CR> :noh<CR>
+    noremap <C-J> <C-W><C-J>
+    noremap <C-K> <C-W><C-K>
+    noremap <C-L> <C-W><C-L>
+    noremap <C-H> <C-W><C-H>
     
 " AIRLINE
     let g:airline#extensions#tabline#enabled = 1
