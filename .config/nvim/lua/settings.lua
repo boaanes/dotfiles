@@ -26,5 +26,9 @@ o.completeopt = 'menu,menuone,noselect'
 
 vim.cmd "set noshowmode"
 
+-- blamer
+vim.g.blamer_enabled = true
+vim.g.blamer_delay = 200
+
 -- theming
 vim.cmd.colorscheme "sonokai"
