@@ -17,6 +17,19 @@ on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+-- for signs in gutter --
+local signs = {
+  { name = "DiagnosticSignError", text = " " },
+  { name = "DiagnosticSignWarn", text = " " },
+  { name = "DiagnosticSignHint", text = " " },
+  { name = "DiagnosticSignInfo", text = " " },
+}
+
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+-------------------------
+
 -- for tab completion --
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
