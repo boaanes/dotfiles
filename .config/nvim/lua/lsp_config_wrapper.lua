@@ -17,6 +17,9 @@ on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+-- Format haskell on save
+vim.cmd([[ autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 100) ]])
+
 -- for signs in gutter --
 local signs = {
   { name = "DiagnosticSignError", text = " " },
@@ -83,6 +86,15 @@ cmp.setup {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local lang_servers = { 'tsserver', 'eslint' }
+
+for _, lsp in pairs(lang_servers) do
+    require('lspconfig')[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities
+    }
+end
+
 require('lspconfig').hls.setup {
     on_attach = on_attach,
     settings = {
@@ -93,12 +105,4 @@ require('lspconfig').hls.setup {
     capabilities = capabilities
 }
 
-require('lspconfig').tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
 
-require('lspconfig').eslint.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
