@@ -22,6 +22,7 @@ o.colorscheme = 'sonoka'
 o.updatetime = 100
 o.termguicolors = true
 o.signcolumn = 'yes'
+o.completeopt = 'menu,menuone,noselect'
 
 vim.cmd "set noshowmode"
 
