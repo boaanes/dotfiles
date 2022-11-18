@@ -18,7 +18,6 @@ o.splitright = true
 o.autoindent = true
 o.scrolloff = 10
 o.clipboard = 'unnamedplus'
-o.colorscheme = 'sonoka'
 o.updatetime = 100
 o.termguicolors = true
 o.signcolumn = 'yes'
@@ -32,3 +31,4 @@ vim.g.blamer_delay = 200
 
 -- theming
 vim.cmd.colorscheme "sonokai"
+vim.opt.termguicolors = true

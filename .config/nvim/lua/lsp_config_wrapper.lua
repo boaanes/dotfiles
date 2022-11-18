@@ -22,10 +22,10 @@ vim.cmd([[ autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 100) ]]
 
 -- for signs in gutter --
 local signs = {
-  { name = "DiagnosticSignError", text = " " },
-  { name = "DiagnosticSignWarn", text = " " },
-  { name = "DiagnosticSignHint", text = " " },
-  { name = "DiagnosticSignInfo", text = " " },
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -86,7 +86,7 @@ cmp.setup {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lang_servers = { 'tsserver', 'eslint' }
+local lang_servers = { 'tsserver', 'eslint', 'kotlin_language_server' }
 
 for _, lsp in pairs(lang_servers) do
     require('lspconfig')[lsp].setup {

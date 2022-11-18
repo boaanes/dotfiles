@@ -23,6 +23,10 @@ map('n', '<C-J>', '<C-W><C-J>', options)
 map('n', '<C-K>', '<C-W><C-K>', options)
 map('n', '<C-L>', '<C-W><C-L>', options)
 
+-- nvim-tree
+map('n', '<leader>t', ':NvimTreeFocus<CR>', options)
+map('n', '<leader>ft', ':NvimTreeFindFile<CR>', options)
+
 -- telescope
 vim.keymap.set('n', '<leader>p', builtin.find_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
