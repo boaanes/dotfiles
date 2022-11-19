@@ -35,3 +35,5 @@ vim.g.blamer_relative_time = true
 -- theming
 vim.cmd.colorscheme "sonokai"
 vim.opt.termguicolors = true
+
+vim.g.gitgutter_sign_priority = 0
