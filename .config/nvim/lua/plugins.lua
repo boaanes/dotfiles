@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'airblade/vim-gitgutter'
     use 'sainnhe/sonokai'
+    use 'moll/vim-bbye'
     use 'APZelos/blamer.nvim'
     use 'nvim-tree/nvim-web-devicons'
     use {

@@ -13,7 +13,7 @@ map('n', '<leader>q', ':q<CR>', options)
 map('n', 'fq', ':q!<CR>', options)
 map('n', '<Tab>', ':bn<CR>', options)
 map('n', '<S-Tab>', ':bp<CR>', options)
-map('n', '<leader>d', ':bd<CR>', options)
+map('n', '<leader>d', ':Bdelete<CR>', options)
 map('n', '<leader>n', ':ene<CR>', options)
 map('n', '<CR>', ':noh<CR>', options)
 
