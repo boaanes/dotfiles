@@ -28,6 +28,9 @@ vim.cmd "set noshowmode"
 -- blamer
 vim.g.blamer_enabled = true
 vim.g.blamer_delay = 200
+vim.g.blamer_show_in_insert_modes = false
+vim.g.blamer_date_format = '%d.%m.%y %H:%M'
+vim.g.blamer_relative_time = true
 
 -- theming
 vim.cmd.colorscheme "sonokai"
