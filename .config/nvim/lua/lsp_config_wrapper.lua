@@ -114,7 +114,7 @@ cmp.setup {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lang_servers = { 'tsserver', 'eslint', 'kotlin_language_server' }
+local lang_servers = { 'tsserver', 'kotlin_language_server' }
 
 for _, lsp in pairs(lang_servers) do
     require('lspconfig')[lsp].setup {
@@ -122,6 +122,12 @@ for _, lsp in pairs(lang_servers) do
         capabilities = capabilities
     }
 end
+
+require('lspconfig').eslint.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { "eslint_d", "--stdin" }
+}
 
 require('lspconfig').hls.setup {
     on_attach = on_attach,
