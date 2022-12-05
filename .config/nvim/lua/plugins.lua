@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-ts-autotag'
     use 'romainl/vim-cool'
     use 'jose-elias-alvarez/typescript.nvim'
+    use 'levouh/tint.nvim'
+    use 'stevearc/dressing.nvim'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }

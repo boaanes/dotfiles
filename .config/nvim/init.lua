@@ -22,6 +22,9 @@ require('lsp_config_wrapper')
 
 require('telescope').load_extension('fzf')
 
+require('dressing').setup({})
+require('tint').setup()
+
 require'nvim-web-devicons'.setup {
  color_icons = true;
  default = true;
