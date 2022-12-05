@@ -12,13 +12,13 @@ require('bufferline').setup {
         separator_style = 'slant'
     }
 }
-require('lsp_config_wrapper')
 require('nvim_tree')
 require("nvim-autopairs").setup {}
 require('nvim-ts-autotag').setup()
 
 require('mason').setup()
 require('mason-lspconfig').setup()
+require('lsp_config_wrapper')
 
 require('telescope').load_extension('fzf')
 

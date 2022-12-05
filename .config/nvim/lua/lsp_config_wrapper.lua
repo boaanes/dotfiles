@@ -46,20 +46,21 @@ local lsp_formatting = function(bufnr)
     })
 end
 
-on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+local custom_lsp_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set("n", ",d", function () vim.diagnostic.open_float({scope = 'cursor'}) end, { silent = true, noremap = true })
 
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     if client.supports_method("textDocument/formatting") then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -112,31 +113,47 @@ cmp.setup {
     }
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lang_servers = { 'tsserver', 'kotlin_language_server' }
-
-for _, lsp in pairs(lang_servers) do
-    require('lspconfig')[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities
-    }
-end
-
-require('lspconfig').eslint.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { "eslint_d", "--stdin" }
-}
-
-require('lspconfig').hls.setup {
-    on_attach = on_attach,
-    settings = {
-        haskell = {
-            formattingProvider = "stylish-haskell"
+require('mason-lspconfig').setup_handlers({
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            on_attach = custom_lsp_attach,
+            capabilities = cmp_capabilities
         }
-    },
-    capabilities = capabilities
-}
-
+    end,
+    ["eslint"] = function()
+        require('lspconfig')[eslint].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            cmd = { "eslint_d", "--stdin" }
+        }
+    end,
+    ["tsserver"] = function()
+        require('typescript').setup {
+            server = {
+                on_attach = function(client, bufnr)
+                    vim.keymap.set("n", ",to", require('typescript').actions.organizeImports, { silent = true })
+                    vim.keymap.set("n", ",tu", require('typescript').actions.removeUnused, { silent = true })
+                    vim.keymap.set("n", ",ta", require('typescript').actions.addMissingImports, { silent = true })
+                    vim.api.nvim_buf_set_keymap(bufnr, "n", ",tr", ':TypescriptRenameFile<CR>', {})
+                    vim.keymap.set("n", ",tf", require('typescript').actions.fixAll, { silent = true })
+                    custom_lsp_attach(client, bufnr)
+                end,
+                capabilities = cmp_capabilities
+            }
+        }
+    end,
+    ["hls"] = function()
+        require('lspconfig').setup {
+            on_attach = custom_lsp_attach,
+            settings = {
+                haskell = {
+                    formattingProvider = "stylish-haskell"
+                }
+            },
+            capabilities = cmp_capabilities
+        }
+    end,
+})
 

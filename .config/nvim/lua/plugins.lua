@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
     use 'romainl/vim-cool'
+    use 'jose-elias-alvarez/typescript.nvim'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -61,16 +62,28 @@ return require('packer').startup(function(use)
       "folke/noice.nvim",
       config = function()
         require("noice").setup({
-            -- add any options here
+            messages = {
+                view = "mini",
+                view_error = "mini",
+                view_warn = "mini",
+            },
+            popupmenu = {
+                backend = 'nui',
+            },
+            lsp = {
+                signature = {
+                    enabled = true,
+                },
+                hover = {
+                    enabled = true,
+                },
+            },
         })
       end,
       requires = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
-        "rcarriga/nvim-notify",
+        "hrsh7th/nvim-cmp",
         }
     })
 end)
