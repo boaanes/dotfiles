@@ -144,16 +144,15 @@ require('mason-lspconfig').setup_handlers({
             }
         }
     end,
-    ["hls"] = function()
-        require('lspconfig').setup {
-            on_attach = custom_lsp_attach,
-            settings = {
-                haskell = {
-                    formattingProvider = "stylish-haskell"
-                }
-            },
-            capabilities = cmp_capabilities
-        }
-    end,
 })
+
+require('lspconfig').hls.setup {
+    on_attach = on_attach,
+    settings = {
+        haskell = {
+            formattingProvider = "stylish-haskell"
+        }
+    },
+    capabilities = capabilities
+}
 
