@@ -1,6 +1,4 @@
 local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
 
 -- global options
 -- o.syntax = 'on'
@@ -38,3 +36,9 @@ vim.cmd.colorscheme "sonokai"
 vim.opt.termguicolors = true
 
 vim.g.gitgutter_sign_priority = 0
+
+-- copilot
+vim.cmd [[
+    imap <silent><script><expr> <C-A> copilot#Accept("\<CR>")
+    let g:copilot_no_tab_map = v:true
+]]

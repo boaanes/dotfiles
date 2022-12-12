@@ -1,7 +1,3 @@
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, options)
-vim.keymap.set('n', 'æd', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', 'ød', vim.diagnostic.goto_prev, opts)
-
 -- Format haskell on save
 vim.cmd([[ autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 100) ]])
 
@@ -16,8 +12,7 @@ local signs = {
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
--------------------------
-
+--
 -- for tab completion --
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -46,6 +41,8 @@ local lsp_formatting = function(bufnr)
     })
 end
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local custom_lsp_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -59,6 +56,9 @@ local custom_lsp_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     vim.keymap.set("n", ",d", function () vim.diagnostic.open_float({scope = 'cursor'}) end, { silent = true, noremap = true })
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, options)
+    vim.keymap.set('n', 'æd', vim.diagnostic.goto_next, options)
+    vim.keymap.set('n', 'ød', vim.diagnostic.goto_prev, options)
 
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     if client.supports_method("textDocument/formatting") then
@@ -81,6 +81,33 @@ cmp.setup {
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
+    mapping = cmp.mapping.preset.insert({
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+                elseif vim.fn["vsnip#available"](1) == 1 then
+                    feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                elseif has_words_before() then
+                    cmp.complete()
+                else
+                    fallback()
+            end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, { "i", "s" }),
+
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
     sources = {
         { name = 'nvim_lsp' }
     }
@@ -96,7 +123,7 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
     ["eslint"] = function()
-        require('lspconfig')[eslint].setup {
+        require('lspconfig')["eslint"].setup {
             on_attach = custom_lsp_attach,
             capabilities = cmp_capabilities,
             cmd = { "eslint_d", "--stdin" }
@@ -114,6 +141,19 @@ require('mason-lspconfig').setup_handlers({
                     custom_lsp_attach(client, bufnr)
                 end,
                 capabilities = cmp_capabilities
+            }
+        }
+    end,
+    ["sumneko_lua"] = function()
+        require('lspconfig')["sumneko_lua"].setup {
+            on_attach = custom_lsp_attach,
+            capabilities = cmp_capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    },
+                }
             }
         }
     end,
