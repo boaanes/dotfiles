@@ -24,15 +24,30 @@ require('settings')
 require('maps')
 
 require('impatient')
-require('treesitter')
+require('nvim-treesitter.configs').setup {
+    auto_install = true,
+    highlight = {
+        enable = true,
+    }
+}
 require('lualine').setup {}
 require('bufferline').setup {
     options = {
         separator_style = 'slant'
     }
 }
-require('nvim_tree')
-require("nvim-autopairs").setup {}
+require('nvim-tree').setup({
+    view = {
+        adaptive_size = true
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = false
+    }
+})
+require('nvim-autopairs').setup {}
 require('nvim-ts-autotag').setup()
 
 require('mason').setup()
