@@ -1,11 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local builtin = require('telescope.builtin')
 
--- leader key
-map('n', '<Space>', '', {})
-vim.g.mapleader = ' '
-
-
 options = { noremap = true, silent=true }
 -- bindings
 map('n', '<leader>w', ':w<CR>', options)
