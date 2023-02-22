@@ -2,9 +2,7 @@ return {
     'wbthomason/packer.nvim',
     'lewis6991/impatient.nvim',
     'airblade/vim-gitgutter',
-    'sainnhe/sonokai',
     'moll/vim-bbye',
-    'APZelos/blamer.nvim',
     'nvim-tree/nvim-web-devicons',
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
@@ -14,7 +12,6 @@ return {
     'hrsh7th/cmp-vsnip',
     'jose-elias-alvarez/null-ls.nvim',
     'hrsh7th/vim-vsnip',
-    'github/copilot.vim',
     'windwp/nvim-autopairs',
     'windwp/nvim-ts-autotag',
     'romainl/vim-cool',
@@ -28,6 +25,33 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     'hrsh7th/nvim-cmp',
+    {
+        'github/copilot.vim',
+        config = function()
+            vim.cmd([[
+                imap <silent><script><expr> <C-A> copilot#Accept("\<CR>")
+                let g:copilot_no_tab_map = v:true
+            ]])
+        end,
+    },
+    {
+        'sainnhe/sonokai',
+        config = function()
+            vim.cmd([[colorscheme sonokai]])
+            vim.opt.termguicolors = true
+        end,
+    },
+    {
+        'APZelos/blamer.nvim',
+        config = function()
+            vim.g.blamer_enabled = true
+            vim.g.blamer_delay = 200
+            vim.g.blamer_show_in_insert_modes = false
+            vim.g.blamer_show_in_visual_modes = false
+            vim.g.blamer_date_format = '%d.%m.%y %H:%M'
+            vim.g.blamer_relative_time = true
+        end,
+    },
     {
         'akinsho/nvim-bufferline.lua',
         version = 'v3.*',
