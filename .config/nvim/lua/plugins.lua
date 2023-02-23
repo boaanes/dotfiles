@@ -1,7 +1,6 @@
 return {
     'wbthomason/packer.nvim',
     'lewis6991/impatient.nvim',
-    'airblade/vim-gitgutter',
     'moll/vim-bbye',
     'nvim-tree/nvim-web-devicons',
     'neovim/nvim-lspconfig',
@@ -18,13 +17,24 @@ return {
     'jose-elias-alvarez/typescript.nvim',
     'levouh/tint.nvim',
     'stevearc/dressing.nvim',
-    'lervag/vimtex',
     'nvim-tree/nvim-web-devicons',
     'nvim-tree/nvim-tree.lua',
     'nvim-lualine/lualine.nvim',
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     'hrsh7th/nvim-cmp',
+    {
+        'lervag/vimtex',
+        config = function()
+            vim.g.vimtex_view_method = 'zathura'
+        end,
+    },
+    {
+        'airblade/vim-gitgutter',
+        config = function()
+            vim.g.gitgutter_sign_priority = 0
+        end,
+    },
     {
         'github/copilot.vim',
         config = function()

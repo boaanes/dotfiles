@@ -23,7 +23,3 @@ o.completeopt = 'menu,menuone,noselect'
 
 vim.cmd "set noshowmode"
 
-vim.g.gitgutter_sign_priority = 0
-
- -- vimtex
-vim.g.vimtex_view_method = 'zathura'
