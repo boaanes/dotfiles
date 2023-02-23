@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local builtin = require("telescope.builtin")
 
-options = { noremap = true, silent = true }
+local options = { noremap = true, silent = true }
 -- bindings
 map("n", "<leader>w", ":w<CR>", options)
 map("n", "<leader>q", ":q<CR>", options)
