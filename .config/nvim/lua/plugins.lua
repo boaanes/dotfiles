@@ -1,29 +1,55 @@
 return {
   "wbthomason/packer.nvim",
-  "lewis6991/impatient.nvim",
   "moll/vim-bbye",
-  "nvim-tree/nvim-web-devicons",
   "neovim/nvim-lspconfig",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
   "hrsh7th/cmp-vsnip",
   "jose-elias-alvarez/null-ls.nvim",
   "hrsh7th/vim-vsnip",
-  "windwp/nvim-autopairs",
-  "windwp/nvim-ts-autotag",
   "romainl/vim-cool",
   "jose-elias-alvarez/typescript.nvim",
-  "levouh/tint.nvim",
-  "stevearc/dressing.nvim",
-  "nvim-tree/nvim-web-devicons",
-  "nvim-tree/nvim-tree.lua",
-  "nvim-lualine/lualine.nvim",
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
   "hrsh7th/nvim-cmp",
   "rcarriga/nvim-notify",
+  {
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      return {
+        color_icons = true,
+        default = true,
+      }
+    end,
+  },
+  { "levouh/tint.nvim", config = true },
+  { "stevearc/dressing.nvim", config = true },
+  { "williamboman/mason.nvim", config = true },
+  { "williamboman/mason-lspconfig.nvim", config = true },
+  { "windwp/nvim-ts-autotag", config = true },
+  { "windwp/nvim-autopairs", config = true },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      return {
+        view = {
+          adaptive_size = true,
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = false,
+        },
+      }
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup()
+    end,
+  },
   {
     "lervag/vimtex",
     config = function()
@@ -66,12 +92,27 @@ return {
   {
     "akinsho/nvim-bufferline.lua",
     version = "v3.*",
+    opts = function()
+      return {
+        options = {
+          separator_style = "slant",
+        },
+      }
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
+    end,
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        auto_install = true,
+        highlight = {
+          enable = true,
+        },
+      })
     end,
   },
   {
@@ -84,10 +125,13 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     version = "0.1.1",
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
   },
   {
     "folke/noice.nvim",
