@@ -58,15 +58,15 @@ return {
       vim.g.gitgutter_sign_priority = 0
     end,
   },
-  { -- TODO: fix config not working
+  {
     "APZelos/blamer.nvim",
-    config = function()
-      vim.g.blamer_delay = 200
-      vim.g.blamer_show_in_insert_modes = false
-      vim.g.blamer_show_in_visual_modes = false
+    init = function()
+      vim.g.blamer_enabled = 1
+      vim.g.blamer_show_in_insert_modes = 0
+      vim.g.blamer_show_in_visual_modes = 0
       vim.g.blamer_date_format = "%d.%m.%y %H:%M"
-      vim.g.blamer_relative_time = true
-      vim.g.blamer_enabled = true
+      vim.g.blamer_relative_time = 1
+      vim.g.blamer_delay = 200
     end,
   },
   {
