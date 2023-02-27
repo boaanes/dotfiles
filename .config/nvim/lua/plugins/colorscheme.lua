@@ -1,20 +1,25 @@
 return {
   {
+    "sainnhe/sonokai",
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = function()
       return {
         style = "moon",
-        sidebars = {
-          "nvim-tree",
-          "terminal",
-        },
         lualine_bold = true,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+        },
       }
     end,
-    config = function()
-      vim.cmd([[colorscheme tokyonight]])
+    config = function(_, opts)
+      local tokyo = require("tokyonight")
+      tokyo.setup(opts)
+      tokyo.load()
     end,
   },
 }

@@ -117,4 +117,7 @@ return {
       })
     end,
   },
+  {
+    "neovimhaskell/haskell-vim",
+  },
 }

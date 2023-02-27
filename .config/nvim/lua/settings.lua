@@ -1,7 +1,7 @@
 local o = vim.o
 
 -- global options
--- o.syntax = 'on'
+-- o.syntax = "on"
 o.swapfile = true
 o.dir = "/tmp"
 o.encoding = "UTF-8"
