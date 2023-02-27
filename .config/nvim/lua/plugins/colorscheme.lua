@@ -8,7 +8,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        style = "moon",
+        style = "storm",
         lualine_bold = true,
         styles = {
           comments = { italic = true },
