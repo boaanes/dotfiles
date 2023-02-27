@@ -28,12 +28,28 @@ return {
       }
     end,
   },
-  { "levouh/tint.nvim", config = true },
+  {
+    "levouh/tint.nvim",
+    opts = function()
+      return {
+        window_ignore_function = function(winid)
+          local bufnr = vim.api.nvim_win_get_buf(winid)
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          if bufname:find("NvimTree") then
+            return true
+          end
+          return false
+        end,
+      }
+    end,
+  },
   { "stevearc/dressing.nvim", config = true },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require("lualine").setup()
+      require("lualine").setup({
+        theme = "tokyonight",
+      })
     end,
   },
   {
