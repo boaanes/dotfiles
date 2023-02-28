@@ -62,9 +62,9 @@ local custom_lsp_attach = function(client, bufnr)
   vim.keymap.set("n", ",d", function()
     vim.diagnostic.open_float({ scope = "cursor" })
   end, { silent = true, noremap = true })
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, options)
-  vim.keymap.set("n", "æd", vim.diagnostic.goto_next, options)
-  vim.keymap.set("n", "ød", vim.diagnostic.goto_prev, options)
+  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
+  vim.keymap.set("n", "æd", vim.diagnostic.goto_next, bufopts)
+  vim.keymap.set("n", "ød", vim.diagnostic.goto_prev, bufopts)
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   if client.supports_method("textDocument/formatting") then
