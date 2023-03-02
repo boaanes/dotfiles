@@ -23,6 +23,10 @@ map("n", "<C-L>", "<C-W><C-L>", options)
 map("n", "<leader>t", ":NvimTreeFocus<CR>", options)
 map("n", "<leader>ft", ":NvimTreeFindFile<CR>", options)
 
+-- moving lines in visual-line mode
+map("x", "K", ":move '<-2<CR>gv-gv", options)
+map("x", "J", ":move '>+1<CR>gv-gv", options)
+
 -- telescope
 vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
