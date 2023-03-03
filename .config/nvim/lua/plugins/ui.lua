@@ -66,7 +66,7 @@ return {
       vim.g.blamer_show_in_visual_modes = 0
       vim.g.blamer_date_format = "%d.%m.%y %H:%M"
       vim.g.blamer_relative_time = 1
-      vim.g.blamer_delay = 200
+      vim.g.blamer_delay = 0
     end,
   },
   {
