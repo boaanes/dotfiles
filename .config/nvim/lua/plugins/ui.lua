@@ -4,20 +4,13 @@ return {
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
   {
-    "nvim-tree/nvim-tree.lua",
-    opts = function()
-      return {
-        view = {
-          adaptive_size = true,
-        },
-        renderer = {
-          group_empty = true,
-        },
-        filters = {
-          dotfiles = false,
-        },
-      }
-    end,
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
   },
   {
     "nvim-tree/nvim-web-devicons",
@@ -35,7 +28,7 @@ return {
         window_ignore_function = function(winid)
           local bufnr = vim.api.nvim_win_get_buf(winid)
           local bufname = vim.api.nvim_buf_get_name(bufnr)
-          if bufname:find("NvimTree") then
+          if bufname:find("filesystem") then
             return true
           end
           return false
@@ -46,11 +39,12 @@ return {
   { "stevearc/dressing.nvim", config = true },
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
+    opts = {
+      options = {
         theme = "tokyonight",
-      })
-    end,
+        globalstatus = true,
+      },
+    },
   },
   {
     "airblade/vim-gitgutter",

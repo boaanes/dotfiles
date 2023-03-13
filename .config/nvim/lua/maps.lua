@@ -20,8 +20,8 @@ map("n", "<C-K>", "<C-W><C-K>", options)
 map("n", "<C-L>", "<C-W><C-L>", options)
 
 -- nvim-tree
-map("n", "<leader>t", ":NvimTreeFocus<CR>", options)
-map("n", "<leader>ft", ":NvimTreeFindFile<CR>", options)
+map("n", "<leader>t", ":Neotree<CR>", options)
+map("n", "<leader>ft", ":Neotree reveal<CR>", options)
 
 -- moving lines in visual-line mode
 map("x", "K", ":move '<-2<CR>gv-gv", options)
