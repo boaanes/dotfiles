@@ -2,6 +2,13 @@ return {
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
   "hrsh7th/nvim-cmp",
+  {
+    "dpayne/CodeGPT.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+  },
   { "windwp/nvim-ts-autotag", config = true },
   { "windwp/nvim-autopairs", config = true },
   {

@@ -164,6 +164,11 @@ require("mason-lspconfig").setup_handlers({
   end,
 })
 
+require("lspconfig")["kotlin_language_server"].setup({
+  on_attach = custom_lsp_attach,
+  capabilities = cmp_capabilities,
+})
+
 require("lspconfig").hls.setup({
   on_attach = custom_lsp_attach,
   settings = {
