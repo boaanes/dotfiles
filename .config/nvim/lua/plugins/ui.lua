@@ -39,12 +39,23 @@ return {
   { "stevearc/dressing.nvim", config = true },
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        theme = "tokyonight",
-        globalstatus = true,
-      },
-    },
+    opts = function()
+      local CodeGPTModule = require("codegpt")
+      return {
+        options = {
+          theme = "tokyonight",
+          globalstatus = true,
+        },
+        sections = {
+          lualine_x = {
+            CodeGPTModule.get_status,
+            "encoding",
+            "fileformat",
+            "filetype",
+          },
+        },
+      }
+    end,
   },
   {
     "airblade/vim-gitgutter",
