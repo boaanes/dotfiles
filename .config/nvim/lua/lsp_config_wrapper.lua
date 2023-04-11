@@ -1,6 +1,3 @@
--- Format haskell on save
-vim.cmd([[ autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 100) ]])
-
 -- for signs in gutter --
 local signs = {
   { name = "DiagnosticSignError", text = "" },
@@ -29,6 +26,7 @@ local null_ls = require("null-ls")
 local sources = {
   null_ls.builtins.formatting.prettierd,
   null_ls.builtins.formatting.stylua,
+  null_ls.builtins.formatting.stylish_haskell,
 }
 null_ls.setup({ sources = sources })
 ----------------------
