@@ -27,6 +27,9 @@ map("n", "<leader>ft", ":Neotree reveal<CR>", options)
 map("x", "K", ":move '<-2<CR>gv-gv", options)
 map("x", "J", ":move '>+1<CR>gv-gv", options)
 
+-- zen mode
+map("n", "<leader>z", ":ZenMode<CR>", options)
+
 -- telescope
 vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 vim.keymap.set("n", "<leader>g", builtin.live_grep, {})

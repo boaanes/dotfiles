@@ -35,5 +35,6 @@
   "vim-cool": { "branch": "master", "commit": "80536b9f2e23292708a64f2e7bcf5e596f9faf24" },
   "vim-gitgutter": { "branch": "master", "commit": "44dbd57dd19e8ec58b2a50c787c8ae7bb231c145" },
   "vim-vsnip": { "branch": "master", "commit": "7753ba9c10429c29d25abfd11b4c60b76718c438" },
-  "vimtex": { "branch": "master", "commit": "9faaf007ce285dd5a9761c285816dea7958c49b1" }
+  "vimtex": { "branch": "master", "commit": "e8542f26b45e489fe7cfa7894737ccb0fe937fcd" },
+  "zen-mode.nvim": { "branch": "main", "commit": "d907e638c879642d226d27469b53db6925f69d4c" }
 }

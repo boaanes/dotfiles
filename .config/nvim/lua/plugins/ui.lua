@@ -4,6 +4,14 @@ return {
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
   {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        width = 0.85,
+      },
+    },
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     dependencies = {
