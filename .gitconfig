@@ -12,3 +12,5 @@
         #gpgsign = true
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[push]
+	autoSetupRemote = true
