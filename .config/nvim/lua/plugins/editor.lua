@@ -25,12 +25,40 @@ return {
     end,
   },
   {
-    "github/copilot.vim",
-    config = function()
-      vim.cmd([[
-                imap <silent><script><expr> <C-A> copilot#Accept("\<CR>")
-                let g:copilot_no_tab_map = v:true
-            ]])
-    end,
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      panel = {
+        keymap = {
+          jump_prev = "øø",
+          jump_next = "ææ",
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-A>",
+          next = "<C-æ>",
+          prev = "<C-ø>",
+        },
+      },
+    },
+  },
+  {
+    "jonahgoldwastaken/copilot-status.nvim",
+    dependencies = { "zbirenbaum/copilot.lua" }, -- or "zbirenbaum/copilot.lua"
+    lazy = true,
+    event = "BufReadPost",
+    opts = {
+      icons = {
+        idle = "",
+        loading = "",
+        offline = "",
+        error = "",
+        warning = "",
+      },
+    },
   },
 }

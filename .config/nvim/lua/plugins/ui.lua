@@ -49,6 +49,7 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function()
       local CodeGPTModule = require("codegpt")
+      local CopilotModule = require("copilot_status")
       return {
         options = {
           theme = "tokyonight",
@@ -57,6 +58,7 @@ return {
         sections = {
           lualine_x = {
             CodeGPTModule.get_status,
+            CopilotModule.status_string,
             "encoding",
             "fileformat",
             "filetype",
