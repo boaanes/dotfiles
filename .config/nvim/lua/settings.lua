@@ -20,5 +20,7 @@ o.updatetime = 100
 o.termguicolors = true
 o.signcolumn = "yes"
 o.completeopt = "menu,menuone,noselect"
+o.nowrap = true
+o.linebreak = true
 
 vim.cmd("set noshowmode")
