@@ -8,6 +8,15 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
+    config = function()
+      vim.g["codegpt_command_defaults"] = {}
+      local commands = { "completion", "code_edit", "explain", "question", "debug", "doc", "opt", "tests", "chat" }
+      for _, command in ipairs(commands) do
+        vim.g["codegpt_command_defaults"][command] = {
+          model = "gpt-4",
+        }
+      end
+    end,
   },
   { "windwp/nvim-ts-autotag", config = true },
   { "windwp/nvim-autopairs", config = true },
