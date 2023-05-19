@@ -52,7 +52,7 @@ return {
       local CopilotModule = require("copilot_status")
       return {
         options = {
-          theme = "tokyonight",
+          theme = "onedark",
           globalstatus = true,
         },
         sections = {
