@@ -14,6 +14,7 @@ map("n", "H", "0", options)
 map("n", "L", "$", options)
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "#", "~", options)
 
 -- navigating splits
 map("n", "<C-H>", "<C-W><C-H>", options)
