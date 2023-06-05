@@ -1,3 +1,5 @@
+-- TODO: move all these to their respetive plugin configs
+
 local map = vim.api.nvim_set_keymap
 local builtin = require("telescope.builtin")
 
@@ -35,5 +37,4 @@ map("n", "<leader>z", ":ZenMode<CR>", options)
 -- telescope
 vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
