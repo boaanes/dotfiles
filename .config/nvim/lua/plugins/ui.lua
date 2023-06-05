@@ -1,5 +1,4 @@
 return {
-  "moll/vim-bbye",
   "romainl/vim-cool",
   "MunifTanjim/nui.nvim",
   "rcarriga/nvim-notify",
@@ -29,21 +28,21 @@ return {
       }
     end,
   },
-  {
-    "levouh/tint.nvim",
-    opts = function()
-      return {
-        window_ignore_function = function(winid)
-          local bufnr = vim.api.nvim_win_get_buf(winid)
-          local bufname = vim.api.nvim_buf_get_name(bufnr)
-          if bufname:find("filesystem") then
-            return true
-          end
-          return false
-        end,
-      }
-    end,
-  },
+  --{
+  --  "levouh/tint.nvim",
+  --  opts = function()
+  --    return {
+  --      window_ignore_function = function(winid)
+  --        local bufnr = vim.api.nvim_win_get_buf(winid)
+  --        local bufname = vim.api.nvim_buf_get_name(bufnr)
+  --        if bufname:find("filesystem") then
+  --          return true
+  --        end
+  --        return false
+  --      end,
+  --    }
+  --  end,
+  --},
   { "stevearc/dressing.nvim", config = true },
   {
     "nvim-lualine/lualine.nvim",
@@ -87,13 +86,23 @@ return {
   {
     "akinsho/nvim-bufferline.lua",
     version = "v3.*",
-    opts = function()
-      return {
-        options = {
-          separator_style = "slant",
+    opts = {
+      options = {
+        -- stylua: ignore
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        diagnostics = "nvim_lsp",
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "left",
+          },
         },
-      }
-    end,
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -145,6 +154,14 @@ return {
     },
     opts = {
       -- configurations go here
+    },
+  },
+  {
+    "echasnovski/mini.bufremove",
+    -- stylua: ignore
+    keys = {
+      { "<leader>d", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>D", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
 }
