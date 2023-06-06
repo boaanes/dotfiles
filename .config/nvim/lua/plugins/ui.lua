@@ -98,6 +98,7 @@ return {
         -- stylua: ignore
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
         diagnostics = "nvim_lsp",
+        always_show_bufferline = false,
         offsets = {
           {
             filetype = "neo-tree",
@@ -119,6 +120,12 @@ return {
         build = "make",
         config = function()
           require("telescope").load_extension("fzf")
+        end,
+      },
+      {
+        "nvim-telescope/telescope-media-files.nvim",
+        config = function()
+          require("telescope").load_extension("media_files")
         end,
       },
     },
