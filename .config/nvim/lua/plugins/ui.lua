@@ -67,20 +67,73 @@ return {
     end,
   },
   {
-    "airblade/vim-gitgutter",
+    "lewis6991/gitsigns.nvim",
     config = function()
-      vim.g.gitgutter_sign_priority = 0
-    end,
-  },
-  {
-    "APZelos/blamer.nvim",
-    init = function()
-      vim.g.blamer_enabled = 1
-      vim.g.blamer_show_in_insert_modes = 0
-      vim.g.blamer_show_in_visual_modes = 0
-      vim.g.blamer_date_format = "%d.%m.%y %H:%M"
-      vim.g.blamer_relative_time = 1
-      vim.g.blamer_delay = 0
+      require("gitsigns").setup({
+        current_line_blame_formatter = "<author>, <author_time> - <summary>",
+        current_line_blame_opts = {
+          delay = 0,
+        },
+        current_line_blame_formatter_opts = {
+          relative_time = true,
+        },
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          -- Navigation
+          map("n", "æc", function()
+            if vim.wo.diff then
+              return "æc"
+            end
+            vim.schedule(function()
+              gs.next_hunk()
+            end)
+            return "<Ignore>"
+          end, { expr = true })
+
+          map("n", "øc", function()
+            if vim.wo.diff then
+              return "øc"
+            end
+            vim.schedule(function()
+              gs.prev_hunk()
+            end)
+            return "<Ignore>"
+          end, { expr = true })
+
+          -- Actions
+          map("n", "<leader>hs", gs.stage_hunk)
+          map("n", "<leader>hr", gs.reset_hunk)
+          map("v", "<leader>hs", function()
+            gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          end)
+          map("v", "<leader>hr", function()
+            gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          end)
+          map("n", "<leader>hS", gs.stage_buffer)
+          map("n", "<leader>hu", gs.undo_stage_hunk)
+          map("n", "<leader>hR", gs.reset_buffer)
+          map("n", "<leader>hp", gs.preview_hunk)
+          map("n", "<leader>hb", function()
+            gs.blame_line({ full = true })
+          end)
+          map("n", "<leader>tb", gs.toggle_current_line_blame)
+          map("n", "<leader>hd", gs.diffthis)
+          map("n", "<leader>hD", function()
+            gs.diffthis("~")
+          end)
+          map("n", "<leader>td", gs.toggle_deleted)
+
+          -- Text object
+          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+        end,
+      })
     end,
   },
   {
