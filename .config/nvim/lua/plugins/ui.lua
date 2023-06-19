@@ -28,21 +28,6 @@ return {
       }
     end,
   },
-  --{
-  --  "levouh/tint.nvim",
-  --  opts = function()
-  --    return {
-  --      window_ignore_function = function(winid)
-  --        local bufnr = vim.api.nvim_win_get_buf(winid)
-  --        local bufname = vim.api.nvim_buf_get_name(bufnr)
-  --        if bufname:find("filesystem") then
-  --          return true
-  --        end
-  --        return false
-  --      end,
-  --    }
-  --  end,
-  --},
   { "stevearc/dressing.nvim", config = true },
   {
     "nvim-lualine/lualine.nvim",
