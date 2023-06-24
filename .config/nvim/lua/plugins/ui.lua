@@ -36,7 +36,7 @@ return {
       local CopilotModule = require("copilot_status")
       return {
         options = {
-          theme = "onedark",
+          theme = "dark_flat",
           globalstatus = true,
         },
         sections = {
