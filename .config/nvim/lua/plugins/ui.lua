@@ -1,6 +1,9 @@
 return {
   "romainl/vim-cool",
-  "MunifTanjim/nui.nvim",
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = true,
+  },
   "rcarriga/nvim-notify",
   {
     "folke/zen-mode.nvim",
@@ -21,6 +24,7 @@ return {
   },
   {
     "nvim-tree/nvim-web-devicons",
+    lazy = true,
     config = function()
       return {
         color_icons = true,
@@ -28,9 +32,13 @@ return {
       }
     end,
   },
-  { "stevearc/dressing.nvim", config = true },
+  {
+    "stevearc/dressing.nvim",
+    config = true,
+  },
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     opts = function()
       local CodeGPTModule = require("codegpt")
       local CopilotModule = require("copilot_status")
