@@ -28,6 +28,7 @@ local sources = {
   null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.stylish_haskell,
   null_ls.builtins.code_actions.gitsigns,
+  null_ls.builtins.formatting.ktlint,
 }
 null_ls.setup({ sources = sources })
 ----------------------
@@ -166,6 +167,15 @@ require("mason-lspconfig").setup_handlers({
 require("lspconfig")["kotlin_language_server"].setup({
   on_attach = custom_lsp_attach,
   capabilities = cmp_capabilities,
+  settings = {
+    kotlin = {
+      compiler = {
+        jvm = {
+          target = "17",
+        },
+      },
+    },
+  },
 })
 
 require("lspconfig").hls.setup({
