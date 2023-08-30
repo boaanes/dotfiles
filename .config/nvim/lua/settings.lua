@@ -22,5 +22,7 @@ o.signcolumn = "yes"
 o.completeopt = "menu,menuone,noselect"
 o.nowrap = true
 o.linebreak = true
+-- set gui font
+o.guifont = "IntelOne Mono Regular"
 
 vim.cmd("set noshowmode")
