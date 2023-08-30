@@ -8,6 +8,10 @@ return {
     end,
     config = function()
       require("nvim-treesitter.configs").setup({
+        rainbow = {
+          enable = true,
+          colors = require("ayu").rainbow_colors(),
+        },
         auto_install = true,
         highlight = {
           enable = true,
