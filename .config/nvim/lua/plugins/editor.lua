@@ -40,11 +40,22 @@ return {
     opts = {},
   },
   {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup({})
-    end,
+    "echasnovski/mini.surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+  },
+  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        custom_commentstring = function()
+          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    },
   },
   {
     "lervag/vimtex",
