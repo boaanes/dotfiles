@@ -34,7 +34,11 @@ return {
     },
   },
   { "windwp/nvim-ts-autotag", config = true },
-  { "windwp/nvim-autopairs", config = true },
+  {
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    opts = {},
+  },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
