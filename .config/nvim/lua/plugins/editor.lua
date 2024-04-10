@@ -58,12 +58,6 @@ return {
     },
   },
   {
-    "lervag/vimtex",
-    config = function()
-      vim.g.vimtex_view_method = "zathura"
-    end,
-  },
-  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
