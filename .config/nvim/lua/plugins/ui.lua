@@ -61,7 +61,7 @@ return {
     event = "VeryLazy",
     opts = function()
       local CodeGPTModule = require("codegpt")
-      local CopilotModule = require("copilot_status")
+      -- local CopilotModule = require("copilot_status")
       return {
         options = {
           theme = "ayu_dark",
@@ -70,7 +70,7 @@ return {
         sections = {
           lualine_x = {
             CodeGPTModule.get_status,
-            CopilotModule.status_string,
+            -- CopilotModule.status_string,
             "encoding",
             "fileformat",
             "filetype",

@@ -57,43 +57,43 @@ return {
       },
     },
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {
-      panel = {
-        keymap = {
-          jump_prev = "øø",
-          jump_next = "ææ",
-        },
-      },
-      suggestion = {
-        enabled = true,
-        auto_trigger = true,
-        keymap = {
-          accept = "<C-A>",
-          next = "<C-æ>",
-          prev = "<C-ø>",
-        },
-      },
-    },
-  },
-  {
-    "jonahgoldwastaken/copilot-status.nvim",
-    dependencies = { "zbirenbaum/copilot.lua" }, -- or "zbirenbaum/copilot.lua"
-    lazy = true,
-    event = "BufReadPost",
-    opts = {
-      icons = {
-        idle = "",
-        loading = "",
-        offline = "",
-        error = "",
-        warning = "",
-      },
-    },
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     panel = {
+  --       keymap = {
+  --         jump_prev = "øø",
+  --         jump_next = "ææ",
+  --       },
+  --     },
+  --     suggestion = {
+  --       enabled = true,
+  --       auto_trigger = true,
+  --       keymap = {
+  --         accept = "<C-A>",
+  --         next = "<C-æ>",
+  --         prev = "<C-ø>",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "jonahgoldwastaken/copilot-status.nvim",
+  --   dependencies = { "zbirenbaum/copilot.lua" }, -- or "zbirenbaum/copilot.lua"
+  --   lazy = true,
+  --   event = "BufReadPost",
+  --   opts = {
+  --     icons = {
+  --       idle = "",
+  --       loading = "",
+  --       offline = "",
+  --       error = "",
+  --       warning = "",
+  --     },
+  --   },
+  -- },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
